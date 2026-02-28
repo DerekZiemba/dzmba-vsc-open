@@ -17,7 +17,7 @@ Especially useful if you have a workspace & just want to open one from it.
 
 I haven't got around to figuring out how to put this on the marketplace. So:
  
- - Download from the Github releases page
+ - Download from the Github releases page https://github.com/DerekZiemba/dzmba-vsc-open/releases
  - In VSCode navigate to the extensions tab, click the three dots in the top right, and select "Install from VSIX"  
  - Select the downloaded file
   
