@@ -45,4 +45,4 @@ I haven't got around to figuring out how to put this on the marketplace. So:
 
 ![contextMenu](https://github.com/DerekZiemba/dzmba-vsc-open/blob/master/img/contextMenu.png)
 
-![taskbar workspace pin](https://github.com/DerekZiemba/dzmba-vsc-open/blob/master/img/pinning.png)
+![taskbar workspace pin](https://github.com/DerekZiemba/dzmba-vsc-open/blob/master/img/pinned-workspace.jpg)
