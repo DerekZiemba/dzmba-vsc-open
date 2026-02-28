@@ -1,0 +1,158 @@
+{
+  "name": "dzmba-vsc-open",
+  "displayName": "Open",
+  "description": "Context Menu options to open file/folders in other apps",
+  "version": "0.0.1",
+  "publisher": "DerekZiemba",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DerekZiemba/dzmba-vsc-open"
+  },
+  "homepage": "https://github.com/DerekZiemba/dzmba-vsc-open",
+  "bugs": {
+    "url": "https://github.com/DerekZiemba/dzmba-vsc-open/issues"
+  },
+  "keywords": [
+    "open",
+    "file",
+    "folder",
+    "workspace",
+    "vscode",
+    "default application",
+    "container",
+    "folder container",
+    "voidtools",
+    "voidtools everything",
+    "filepilot"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": ".out/src/extension.js",
+  "type": "module",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dzmba-vsc-open.openWithDefaultApplication",
+        "title": "Open with default App"
+      },
+      {
+        "command": "dzmba-vsc-open.openWithVSCode",
+        "title": "Open in VSCode"
+      },
+      {
+        "command": "dzmba-vsc-open.openInDevContainer",
+        "title": "Open in Dev Container"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "dzmba-vsc-open.openWithDefaultApplication",
+          "group": "navigation@90",
+          "when": "(dzmba-vsc-open:fileWithDefault && !explorerResourceIsFolder) || (dzmba-vsc-open:folderWithDefault && explorerResourceIsFolder)"
+        },
+        {
+          "command": "dzmba-vsc-open.openInDevContainer",
+          "group": "navigation@91",
+          "when": "!hideConnectCommands && dzmba-vsc-open:folderWithDevContainer && explorerResourceIsFolder"
+        },
+        {
+          "command": "dzmba-vsc-open.openWithVSCode",
+          "group": "navigation@92",
+          "when": "(dzmba-vsc-open:folderWithVSCode && explorerResourceIsFolder) || (dzmba-vsc-open:fileWithVSCode && !explorerResourceIsFolder)"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "dzmba-vsc-open.openWithDefaultApplication",
+          "when": "resourceSet"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "dzmba-vsc-open.openWithDefaultApplication",
+        "key": "ctrl+alt+o",
+        "mac": "cmd+alt+o"
+      }
+    ],
+    "configuration": {
+      "title": "dzmba-vsc-open: Additional Open Options",
+      "properties": {
+        "dzmba-vsc-open.contextMenu.openWith": {
+          "type": "object",
+          "default": {
+            "file": {
+              "default": true,
+              "vscode": false
+            },
+            "folder": {
+              "default": false,
+              "vscode": true,
+              "devContainer": true
+            }
+          },
+          "examples": [
+            {
+              "label": "Show all options for both files and folders",
+              "value": {
+                "file": {
+                  "default": true,
+                  "vscode": true
+                },
+                "folder": {
+                  "default": true,
+                  "vscode": true,
+                  "devContainer": true
+                }
+              }
+            },
+            {
+              "label": "Show only default app option for files, and only vscode option for folders",
+              "value": {
+                "file": {
+                  "default": true,
+                  "vscode": false
+                },
+                "folder": {
+                  "default": false,
+                  "vscode": true,
+                  "devContainer": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p tsconfig.json",
+    "watch": "tsc -watch -p ./",
+    "build": "tsc -p tsconfig.json",
+    "bundle": "vsce package -o ./dist/dzmba-vsc-open.vsix",
+    "load": "code --install-extension \"$(cygpath -wam ./dist/dzmba-vsc-open.vsix)\" --force"
+  },
+  "devDependencies": {
+    "@types/node": "25.3.2",
+    "@types/vscode": "1.109.0",
+    "type-fest": "5.4.4",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.56.1",
+    "vsce": "2.15.0"
+  },
+  "dependencies": {
+    "@devcontainers/cli": "0.83.3",
+    "open": "11.0.0"
+  },
+  "volta": {
+    "node": "22.21.1"
+  }
+}

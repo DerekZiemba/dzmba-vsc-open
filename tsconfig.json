@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "newLine": "lf",
+    "pretty": true,
+    "noErrorTruncation": true,
+    "strict":true,
+    "module": "nodenext",
+    "target": "ESNext",
+    "moduleResolution": "nodenext",
+    "outDir": ".out",
+    "sourceMap": true,
+    // "noEmitHelpers": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipDefaultLibCheck": true,
+    "checkJs": false,
+    "lib": [
+      "ESNext"
+    ],
+  },
+  "types": [
+    "node",
+    "vscode"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+  ]
+}
